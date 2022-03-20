@@ -1,8 +1,7 @@
 require'nvim-tree'.setup({
     auto_close = true,
     filters = {
-        dotfiles = true,
-        custom = {'node_modules'}
+        custom = {'.git', 'node_modules', 'vendor'}
     },
     git = {
         enable = false

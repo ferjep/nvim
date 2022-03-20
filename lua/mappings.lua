@@ -1,4 +1,4 @@
-default_options = {noremap = true, silent = true}
+local default_options = {noremap = true, silent = true}
 
 -- telescope
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_options)
