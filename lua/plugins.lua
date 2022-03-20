@@ -35,6 +35,17 @@ use {
     config = get_config('lsp')
 }
 
+use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+        'neovim/nvim-lspconfig',
+        'hrsh7th/cmp-nvim-lsp',
+        'saadparwaiz1/cmp_luasnip', -- snippets
+        'L3MON4D3/LuaSnip' -- snippets
+    },
+    config = get_config('nvim-cmp')
+}
+
 use { 'ellisonleao/gruvbox.nvim', config = get_config('gruvbox') }
 
 use {

@@ -3,7 +3,7 @@ HOME = os.getenv("HOME")
 vim.cmd([[
     let mapleader=" "
 ]])
-
+vim.o.completeopt = 'menu,menuone,noselect'
 vim.o.compatible = false
 vim.o.relativenumber = true
 vim.o.number = true
