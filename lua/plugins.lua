@@ -68,6 +68,14 @@ use {'b3nj5m1n/kommentary'}
 
 use {'tpope/vim-surround'}
 
+use {
+  'lewis6991/gitsigns.nvim',
+  requires = {
+    'nvim-lua/plenary.nvim'
+  },
+  config = get_config('gitsigns')
+}
+
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 if Packer_bootstrap then
