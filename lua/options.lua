@@ -2,8 +2,8 @@ HOME = os.getenv("HOME")
 
 vim.cmd([[
     let mapleader=" "
+    set completeopt=menu,menuone,noselect
 ]])
-vim.o.completeopt = 'menu,menuone,noselect'
 vim.o.compatible = false
 vim.o.relativenumber = true
 vim.o.number = true

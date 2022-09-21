@@ -10,6 +10,11 @@ lsp_installer.on_server_ready(function(server)
           debounce_text_changes = 150,
         }
     }
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    server_opts.capabilities = capabilities
+
     -- (optional) Customize the options passed to the server
     -- if server.name == "tsserver" then
     --     opts.root_dir = function() ... end
@@ -30,3 +35,11 @@ lsp_installer.on_server_ready(function(server)
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
     server:setup(server_opts)
 end)
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = false,
+  update_in_insert = true,
+  severity_sort = false,
+})
