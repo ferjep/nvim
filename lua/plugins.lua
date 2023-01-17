@@ -1,6 +1,5 @@
 -- returns the require for use in `config` parameter of packer's use
 -- expects the name of the config file
---
 local function get_config(name)
     return string.format("require(\"config/%s\")", name)
 end
@@ -26,14 +25,23 @@ local use = packer.use
 packer.reset()
 
 use 'wbthomason/packer.nvim' -- Package manager. packer can manage itself
+use {"L3MON4D3/LuaSnip"}
+use { "neovim/nvim-lspconfig" }
 
-use {
-    'williamboman/nvim-lsp-installer',
-    requires = {
-        'neovim/nvim-lspconfig',
-    },
-    config = get_config('lsp')
-}
+use { "williamboman/mason.nvim" }
+use { "williamboman/mason-lspconfig.nvim" }
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    'tsserver',
+    'phpactor',
+    'jdtls',
+    'volar',
+  },
+})
+ 
+require'lspconfig'.vuels.setup{}
 
 use {
     'hrsh7th/nvim-cmp',
@@ -72,11 +80,11 @@ use {'b3nj5m1n/kommentary'}
 use {'tpope/vim-surround'}
 
 use {
-  'lewis6991/gitsigns.nvim',
-  requires = {
+    'lewis6991/gitsigns.nvim',
+    requires = {
     'nvim-lua/plenary.nvim'
-  },
-  config = get_config('gitsigns')
+    },
+    config = get_config('gitsigns')
 }
 
 -- Automatically set up your configuration after cloning packer.nvim

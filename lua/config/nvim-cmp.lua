@@ -89,14 +89,29 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local server_opts = {
+    on_attach = on_server_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+}
 
 local lspconfig = require('lspconfig')
-local servers = { 'sumneko_lua', 'pyright', 'tsserver', 'clangd', 'vuels' }
+local servers = { 'phpactor', 'tsserver', 'jdtls', 'volar' }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-  }
+  lspconfig[lsp].setup(server_opts) 
 end
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = false,
+  update_in_insert = true,
+  severity_sort = false,
+})
