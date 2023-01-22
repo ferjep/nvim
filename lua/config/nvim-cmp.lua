@@ -102,7 +102,7 @@ local server_opts = {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'phpactor', 'tsserver', 'jdtls', 'volar' }
+local servers = { 'phpactor', 'tsserver', 'jdtls', 'volar', 'cssls', 'pylsp' }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(server_opts) 
