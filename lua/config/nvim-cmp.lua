@@ -88,6 +88,13 @@ cmp.setup.cmdline(':', {
   })
 })
 
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -102,7 +109,7 @@ local server_opts = {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'phpactor', 'tsserver', 'jdtls', 'volar', 'cssls', 'pylsp' }
+local servers = { 'phpactor', 'tsserver', 'jdtls', 'volar', 'cssls', 'pylsp', 'eslint', 'lua_ls' }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(server_opts) 

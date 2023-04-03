@@ -57,7 +57,10 @@ use {
     config = get_config('nvim-cmp')
 }
 
-use { 'ellisonleao/gruvbox.nvim', config = get_config('gruvbox') }
+use {
+    'folke/tokyonight.nvim',
+    config = get_config('colorscheme')
+}
 
 use {
     'kyazdani42/nvim-tree.lua',
@@ -67,11 +70,14 @@ use {
     config = get_config('nvim-tree')
 }
 
-use {'sheerun/vim-polyglot'}
-
 use {
   'nvim-telescope/telescope.nvim',
-  requires = { {'nvim-lua/plenary.nvim'} },
+  requires = { {'nvim-lua/plenary.nvim'} }
+}
+
+use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
 }
 
 use { "aserowy/tmux.nvim", config = get_config('tmux') }
@@ -85,6 +91,12 @@ use {
     'nvim-lua/plenary.nvim'
     },
     config = get_config('gitsigns')
+}
+
+use {
+  'nvim-lualine/lualine.nvim',
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+  config = get_config('lualine')
 }
 
 -- Automatically set up your configuration after cloning packer.nvim

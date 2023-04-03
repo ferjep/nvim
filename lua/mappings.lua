@@ -1,7 +1,7 @@
 local default_options = {noremap = true, silent = true}
 
 -- telescope
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', default_options)
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files no_ignore_dot=true<cr>', default_options)
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', default_options)
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', default_options)
 
