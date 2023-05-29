@@ -80,6 +80,27 @@ use {
     config = function() require("nvim-autopairs").setup {} end
 }
 
+use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+    end,
+}
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    'html', 'php', 'css', 'typescript', 'javascript'
+  },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true
+  },
+  indent = {
+    enable = true
+  }
+}
+
 use { "aserowy/tmux.nvim", config = get_config('tmux') }
 use {'b3nj5m1n/kommentary'}
 
