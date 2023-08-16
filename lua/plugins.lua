@@ -88,9 +88,11 @@ use {
     end,
 }
 
+use "windwp/nvim-ts-autotag"
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    'html', 'php', 'css', 'typescript', 'javascript'
+    'html', 'php', 'css', 'typescript', 'javascript', 'python', 'vue'
   },
   highlight = {
     enable = true,
@@ -98,6 +100,9 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true
+  },
+  autotag = {
+    enable = true,
   }
 }
 
